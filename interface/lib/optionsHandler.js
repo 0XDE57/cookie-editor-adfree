@@ -238,24 +238,6 @@ export class OptionsHandler extends EventEmitter {
   }
 
   /**
-   * Gets whether ads are enabled or not.
-   * @return {boolean} True if ads are enabled, otherwise false.
-   */
-  getAdsEnabled() {
-    // Uses `!==` false in order to be opt-in by default, since it was added at
-    // a later time.
-    return this.options.adsEnabled !== false;
-  }
-  /**
-   * Sets whether the ads are enabled or not.
-   * @param {boolean} adsEnabled True if the ads are enabled, otherwise false.
-   */
-  setAdsEnabled(adsEnabled) {
-    this.options.adsEnabled = adsEnabled;
-    this.saveOptions();
-  }
-
-  /**
    * Loads all the options. This is done at load time, but can be called
    * manually to reload the options.
    */

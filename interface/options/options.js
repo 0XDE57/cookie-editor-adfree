@@ -22,7 +22,6 @@ document.addEventListener('DOMContentLoaded', async (event) => {
   const extraInfoInput = document.getElementById('extra-info');
   const themeInput = document.getElementById('theme');
   const buttonBarTopInput = document.getElementById('button-bar-top');
-  const adsEnabledInput = document.getElementById('ads-enabled');
 
   await optionHandler.loadOptions();
   themeHandler.updateTheme();
@@ -43,7 +42,6 @@ document.addEventListener('DOMContentLoaded', async (event) => {
     extraInfoInput.value = optionHandler.getExtraInfo();
     themeInput.value = optionHandler.getTheme();
     buttonBarTopInput.checked = optionHandler.getButtonBarTop();
-    adsEnabledInput.checked = optionHandler.getAdsEnabled();
 
     if (!browserDetector.isSafari()) {
       document
@@ -99,12 +97,6 @@ document.addEventListener('DOMContentLoaded', async (event) => {
         return;
       }
       optionHandler.setButtonBarTop(buttonBarTopInput.checked);
-    });
-    adsEnabledInput.addEventListener('change', (event) => {
-      if (!event.isTrusted) {
-        return;
-      }
-      optionHandler.setAdsEnabled(adsEnabledInput.checked);
     });
 
     document

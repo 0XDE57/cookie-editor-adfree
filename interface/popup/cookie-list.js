@@ -1,5 +1,4 @@
 import { CookieHandlerDevtools } from '../devtools/cookieHandlerDevtools.js';
-import { AdHandler } from '../lib/ads/adHandler.js';
 import { Animate } from '../lib/animate.js';
 import { BrowserDetector } from '../lib/browserDetector.js';
 import { Cookie } from '../lib/cookie.js';
@@ -31,11 +30,6 @@ import { CookieHandlerPopup } from './cookieHandlerPopup.js';
   const storageHandler = new GenericStorageHandler(browserDetector);
   const optionHandler = new OptionsHandler(browserDetector, storageHandler);
   const themeHandler = new ThemeHandler(optionHandler);
-  const adHandler = new AdHandler(
-    browserDetector,
-    storageHandler,
-    optionHandler,
-  );
   const cookieHandler = window.isDevtools
     ? new CookieHandlerDevtools(browserDetector)
     : new CookieHandlerPopup(browserDetector);
@@ -1071,7 +1065,6 @@ import { CookieHandlerPopup } from './cookieHandlerPopup.js';
     await optionHandler.loadOptions();
     themeHandler.updateTheme();
     moveButtonBar();
-    handleAd();
     handleAnimationsEnabled();
     optionHandler.on('optionsChanged', onOptionsChanged);
     cookieHandler.on('cookiesChanged', onCookiesChanged);
@@ -1277,58 +1270,6 @@ import { CookieHandlerPopup } from './cookieHandlerPopup.js';
         cookieElement.classList.add('hide');
       }
     }
-  }
-
-  /**
-   * Handles the main logic of displaying ads. This will check if there are any
-   * ads that can be displayed and will select a random one to display if there
-   * are more than one valid option.
-   */
-  async function handleAd() {
-    const canShow = await adHandler.canShowAnyAd();
-    if (!canShow) {
-      return;
-    }
-    const selectedAd = await adHandler.getRandomValidAd();
-    if (selectedAd === false) {
-      console.log('No valid ads to display');
-      return;
-    }
-    clearAd();
-    const adItemHtml = displayAd(selectedAd);
-    document.getElementById('ad-container').appendChild(adItemHtml);
-  }
-  /**
-   * Removes the currently displayed ad from the interface.
-   */
-  function clearAd() {
-    clearChildren(document.getElementById('ad-container'));
-  }
-
-  /**
-   * Creates the HTML to display an ad and assigns the event handlers.
-   * @param {object} adObject Ad to display.
-   * @return {string} The HTML representation of the ad.
-   */
-  function displayAd(adObject) {
-    const template = document.importNode(
-      document.getElementById('tmp-ad-item').content,
-      true,
-    );
-    const link = template.querySelector('.ad-link a');
-    link.textContent = adObject.text;
-    link.title = adObject.tooltip;
-    link.href = adObject.url;
-
-    template.querySelector('.dont-show').addEventListener('click', (e) => {
-      clearAd();
-      adHandler.markAdAsDismissed(adObject);
-    });
-    template.querySelector('.later').addEventListener('click', (e) => {
-      clearAd();
-    });
-
-    return template;
   }
 
   /**
