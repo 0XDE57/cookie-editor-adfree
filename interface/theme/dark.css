@@ -19,10 +19,6 @@
   --changed-surface-color: #3a391a;
   --success-surface-color: #15531d;
 
-  --ad-surface-color: #122738;
-  --ad-text-color: #7ac2ec;
-  --ad-link-color: var(--primary-link-color);
-
   --search-surface-color: #383b41;
   --search-surface-hover-color: #494b50;
   --search-surface-content-color: #665f37;

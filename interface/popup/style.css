@@ -170,66 +170,6 @@ button:focus {
   outline: 0;
 }
 
-#ad-container > div {
-  padding: 3px 6px;
-  display: flex;
-  background-color: var(--ad-surface-color);
-}
-
-.ad-tag {
-  font-style: italic;
-  color: var(--ad-text-color);
-}
-
-.ad-link {
-  flex: 1;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-.ad-link a {
-  color: var(--ad-link-color);
-}
-
-.ad-link a:hover {
-  color: var(--primary-text-color);
-}
-
-.ad-actions {
-  display: inline-block;
-}
-
-.ad-actions button {
-  border: none;
-  background: transparent;
-  font-size: 12px;
-  color: var(--ad-link-color);
-}
-
-.ad-actions button:hover {
-  color: var(--primary-text-color);
-  text-decoration: underline;
-}
-.ad-actions button:focus-visible {
-  outline: 2px solid var(--primary-outline-color);
-  border-radius: 4px;
-}
-
-@media (max-width: 400px) {
-  #ad-container > div {
-    display: block;
-  }
-  .ad-link {
-    display: inline;
-  }
-  .ad-actions {
-    display: block;
-    text-align: right;
-    margin-top: 8px;
-  }
-}
-
-
 #searchContainer {
   display: flex;
   position: relative;

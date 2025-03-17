@@ -181,51 +181,6 @@ svg.icon {
   transform: translateX(14px);
 }
 
-#ad-container > div {
-  padding: 3px 6px;
-  background-color: var(--ad-surface-color);
-  font-size: 14px;
-}
-
-.ad-tag {
-  font-style: italic;
-  color: var(--ad-text-color);
-}
-
-.ad-link {
-  display: inline;
-}
-
-.ad-link a {
-  color: var(--ad-link-color);
-}
-
-.ad-link a:hover {
-  color: var(--primary-text-color);
-}
-
-.ad-actions {
-  text-align: right;
-}
-
-.ad-actions button {
-  border: none;
-  background: transparent;
-  font-size: 14px;
-  padding: 12px;
-  padding-bottom: 4px;
-  color: var(--ad-link-color);
-}
-
-.ad-actions button:hover {
-  color: var(--primary-text-color);
-  text-decoration: underline;
-}
-.ad-actions button:focus-visible {
-  outline: 2px solid var(--primary-outline-color);
-  border-radius: 4px;
-}
-
 #searchContainer {
   display: flex;
   position: relative;
